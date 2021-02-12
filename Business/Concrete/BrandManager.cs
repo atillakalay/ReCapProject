@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -17,14 +19,32 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-        public List<Brand> GetAll()
+
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new DataResult<List<Brand>>(_brandDal.GetAll(), true);
         }
 
-        public Brand GetById(int brandId)
+        public IResult Add(Brand brand)
         {
-            return _brandDal.Get(b => b.BrandId == brandId);
+            if (brand.BrandName.Length < 3)
+            {
+                return new ErrorResult(Messages.BrandNameInvalid);
+            }
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.BrandAdded);
+        }
+
+        public IResult Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+            return new SuccessResult(Messages.BrandUpdate);
+        }
+
+        public IResult Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
     }
 }
