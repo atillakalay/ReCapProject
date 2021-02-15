@@ -35,10 +35,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAdded);
         }
 
+
+
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
-            return new SuccessResult(Messages.BrandUpdate);
+            return new SuccessResult(Messages.BrandUpdated);
         }
 
         public IResult Delete(Brand brand)
