@@ -11,19 +11,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class RentalsController : ControllerBase
     {
-        private ICustomerService _customerService;
+        private IRentalService _rentalService;
 
-        public CustomersController(ICustomerService customerService)
+        public RentalsController(IRentalService rentalService)
         {
-            _customerService = customerService;
+            _rentalService = rentalService;
         }
 
         [HttpGet("getall")]
         public ActionResult GetAll()
         {
-            var result = _customerService.GetAll();
+            var result = _rentalService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,23 +31,21 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        [HttpGet("getrentaldetailsdto")]
+        public ActionResult GetRentalDetailsDto(int CarId)
         {
-            var result = _customerService.GetById(id);
+            var result = _rentalService.GetRentalDetailsDto(CarId);
             if (result.Success)
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Customer customer)
+        public ActionResult Add(Rental rental)
         {
-            var result = _customerService.Add(customer);
+            var result = _rentalService.Add(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,31 +53,26 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
-        [HttpPost("update")]
-        public IActionResult Update(Customer customer)
-        {
-            var result = _customerService.Update(customer);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-
         [HttpPost("delete")]
-        public IActionResult Delete(Customer customer)
+        public ActionResult Delete(Rental rental)
         {
-            var result = _customerService.Delete(customer);
+            var result = _rentalService.Delete(rental);
             if (result.Success)
             {
                 return Ok(result);
             }
 
             return BadRequest(result);
-
+        }
+        [HttpPost("update")]
+        public ActionResult Update(Rental rental)
+        {
+            var result = _rentalService.Add(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }
-

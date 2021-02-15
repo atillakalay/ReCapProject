@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         {
             _carService = carService;
         }
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult Get()
         {
             var result = _carService.GetAll();
@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetAllByBrandId")]
+        [HttpGet("getallbybrandid")]
         public ActionResult Get(int id)
         {
             var result = _carService.GetAllByBrandId(id);
@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetByUnitPrice")]
+        [HttpGet("getbyunitprice")]
         public ActionResult Get(decimal min, decimal max)
         {
             var result = _carService.GetByUnitPrice(min, max);
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetCarDetails")]
+        [HttpGet("getcardetails")]
         public ActionResult GetCarDetails()
         {
             var result = _carService.GetCarDetails();
@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("getbyid")]
         public ActionResult GetById(int carId)
         {
             var result = _carService.GetById(carId);
@@ -80,7 +80,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public ActionResult Add(Car car)
         {
             var result = _carService.Add(car);
@@ -91,7 +91,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-        [HttpPost("Delete")]
+        [HttpPost("delete")]
         public ActionResult Delete(Car car)
         {
             var result = _carService.Delete(car);
@@ -102,7 +102,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-        [HttpPost("Update")]
+        [HttpPost("update")]
         public ActionResult Update(Car car)
         {
             var result = _carService.Update(car);

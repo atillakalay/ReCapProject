@@ -12,8 +12,10 @@ namespace Business.Abstract
     public interface IUserService
     {
         IDataResult<List<User>> GetAll();
-        IDataResult<List<UserDetailDto>> GetUserDetailsDto(int userId);
         IDataResult<User> GetById(int userId);
+        IDataResult<List<UserDetailDto>> GetUserDetailsDto(int userId);
         IResult Add(User user);
+        IResult Update(User user);
+        IResult Delete(User user);
     }
 }

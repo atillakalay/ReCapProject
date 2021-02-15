@@ -25,6 +25,11 @@ namespace Business.Concrete
             return new DataResult<List<Brand>>(_brandDal.GetAll(), true);
         }
 
+        public IDataResult<Brand> GetById(int id)
+        {
+         return new SuccessDataResult<Brand>(_brandDal.Get(x=>x.BrandId==id));
+        }
+
         public IResult Add(Brand brand)
         {
             if (brand.BrandName.Length < 3)
@@ -34,9 +39,6 @@ namespace Business.Concrete
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);
         }
-
-
-
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
