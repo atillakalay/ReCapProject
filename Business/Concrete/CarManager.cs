@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
-using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
-using FluentValidation;
+
 
 namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
         private ICarDal _carDal;
+
 
         public CarManager(ICarDal carDal)
         {
@@ -56,6 +56,11 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            IResult result = BusinessRules.Run(CheckIfCarNameExist(car.CarName));
+            if (result != null)
+            {
+                return result;
+            }
             _carDal.Add(car);
             return new Result(true, Messages.CarAdded);
         }
@@ -65,7 +70,7 @@ namespace Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
@@ -75,6 +80,15 @@ namespace Business.Concrete
         public IDataResult<Car> GetById(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(p => p.CarId == carId));
+        }
+        private IResult CheckIfCarNameExist(string carName)
+        {
+            var result = _carDal.GetAll(c => c.CarName == carName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CarNameAlreadyExist);
+            }
+            return new SuccessResult(null);
         }
     }
 }

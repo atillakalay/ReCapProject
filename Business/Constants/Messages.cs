@@ -8,7 +8,7 @@ namespace Business.Constants
 {
     public static class Messages
     {
-     
+
         public static string RentalAdded = "Kiralama işlemi başarılı";
         public static string RentalDeleted = "Kiralama işlemi silindi";
         public static string RentalUpdated = "Kiralama işlemi güncellendi";
@@ -43,6 +43,12 @@ namespace Business.Constants
         public static string CustomerDeleted = "Müşteri başarıyla silindi";
         public static string CustomerUpdated = "Müşteri başarıyla güncellendi";
 
+        internal static string CarImageAdded = "Araç resmi başarıyla eklendi";
+        internal static string CarImageUpdated = "Araç resmi başarıyla güncellendi";
+        internal static string CarImageDeleted = "Araç resmi başarıyla silindi";
 
+        internal static string CarImageLimitExcited = "Bir aracın 5 'den fazla resmi olamaz";
+        internal static string CarNameAlreadyExist = "Bu isim başka bir araç mevcut";
+        public static string IncorrectFileExtension = "Kabul edilmeyen dosya uzantısı";
     }
 }
