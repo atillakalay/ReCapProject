@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,12 +44,24 @@ namespace Business.Constants
         public static string CustomerDeleted = "Müşteri başarıyla silindi";
         public static string CustomerUpdated = "Müşteri başarıyla güncellendi";
 
-        internal static string CarImageAdded = "Araç resmi başarıyla eklendi";
-        internal static string CarImageUpdated = "Araç resmi başarıyla güncellendi";
-        internal static string CarImageDeleted = "Araç resmi başarıyla silindi";
+        public static string CarImageAdded = "Araç resmi başarıyla eklendi";
+        public static string CarImageUpdated = "Araç resmi başarıyla güncellendi";
+        public static string CarImageDeleted = "Araç resmi başarıyla silindi";
 
-        internal static string CarImageLimitExcited = "Bir aracın 5 'den fazla resmi olamaz";
-        internal static string CarNameAlreadyExist = "Bu isim başka bir araç mevcut";
+        public static string CarImageLimitExcited = "Bir aracın 5 'den fazla resmi olamaz";
+        public static string CarNameAlreadyExist = "Bu isim başka bir araç mevcut";
         public static string IncorrectFileExtension = "Kabul edilmeyen dosya uzantısı";
+
+        public static string AuthorizationDenied = "Yetkiniz yok.";
+        public static string UserRegistered;
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Parola hatası";
+        public static string SuccessfulLogin = "Başarılı giriş";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string AccessTokenCreated = "Erişim sağlandı";
+        internal static string SuccessfullyRegister="Başarıyla oluşturuldu";
+        internal static User InValidUser;
+        internal static string SuccessfullyLogin="Başarıyla giriş yapıldı";
+        internal static string ValidUser;
     }
 }
