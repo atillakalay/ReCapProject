@@ -63,5 +63,6 @@ namespace Business.Constants
         internal static User InValidUser;
         internal static string SuccessfullyLogin="Başarıyla giriş yapıldı";
         internal static string ValidUser;
+        internal static string SuccessfulUserAdded="Kayıt Olundu ";
     }
 }
