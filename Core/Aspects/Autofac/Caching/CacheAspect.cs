@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Castle.DynamicProxy;
 using Core.CrossCuttingConcerns.Caching;
 using Core.Utilities.Interceptors;
@@ -23,7 +24,7 @@ namespace Core.Aspects.Autofac.Caching
             var methodName = string.Format($"{invocation.Method.ReflectedType.FullName}.{invocation.Method.Name}");
             var arguments = invocation.Arguments.ToList();
             var key = $"{methodName}({string.Join(",", arguments.Select(x => x?.ToString() ?? "<Null>"))})";
-            if (_cacheManager.IsAdd(key))
+            if (_cacheManager.IsAdd((key)))
             {
                 invocation.ReturnValue = _cacheManager.Get(key);
                 return;
