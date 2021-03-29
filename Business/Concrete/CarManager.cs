@@ -28,9 +28,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
         [CacheAspect()]
-        public IDataResult<List<Car>> GetAll()
+        public IDataResult<List<CarDetailDto>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarList);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarList);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)

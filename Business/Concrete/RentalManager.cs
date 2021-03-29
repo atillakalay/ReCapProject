@@ -20,9 +20,9 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-        public IDataResult<List<Rental>> GetAll()
+        public IDataResult<List<RentalDetailDto>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetailsDto(int carId)
