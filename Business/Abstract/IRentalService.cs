@@ -11,7 +11,7 @@ namespace Business.Abstract
 {
     public interface IRentalService
     {
-        IDataResult<List<RentalDetailDto>> GetAll();
+        IDataResult<List<Rental>> GetAll();
         IDataResult<List<RentalDetailDto>> GetRentalDetailsDto(int carId);
         IResult Add(Rental rental);
         IResult Delete(Rental rental);
