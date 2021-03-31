@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using Business.Abstract;
-using Business.Concrete;
 using Entities.Concrete;
 
 namespace WebAPI.Controllers
@@ -29,18 +23,6 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getallbybrandid")]
-        public ActionResult Get(int id)
-        {
-            var result = _carService.GetAllByBrandId(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
             return BadRequest(result);
         }
 
@@ -72,6 +54,28 @@ namespace WebAPI.Controllers
         public ActionResult GetById(int carId)
         {
             var result = _carService.GetById(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+        [HttpGet("getallbybrandid")]
+        public ActionResult GetAllByBrandId(int brandId)
+        {
+            var result = _carService.GetAllByBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+        [HttpGet("getallbycolorid")]
+        public ActionResult GetAllByColorId(int colorId)
+        {
+            var result = _carService.GetAllByColorId(colorId);
             if (result.Success)
             {
                 return Ok(result);

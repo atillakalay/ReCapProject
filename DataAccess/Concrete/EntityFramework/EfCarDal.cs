@@ -23,14 +23,20 @@ namespace DataAccess.Concrete.EntityFramework
                                  on c.BrandId equals b.BrandId
                              join co in context.Colors
                                  on c.ColorId equals co.ColorId
+                             join ca in context.Cars
+                                 on c.CarName equals ca.CarName
+                           
                              select new CarDetailDto
                              {
                                  CarId = c.CarId,
+                                 CarName =ca.CarName,
                                  DailyPrice = c.DailyPrice,
                                  BrandName = b.BrandName,
                                  ColorName = co.ColorName,
                                  ModelYear = c.ModelYear,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ColorId =c.ColorId,
+                                 BrandId = b.BrandId
                              };
                 return result.ToList();
             }
@@ -45,8 +51,13 @@ namespace DataAccess.Concrete.EntityFramework
                                  on car.ColorId equals color.ColorId
                              join brand in context.Brands
                                  on car.BrandId equals brand.BrandId
+                             join ca in context.Cars
+                                 on car.CarName equals ca.CarName
+                             select new CarDetailDto()
+                             {
+                                 CarId = car.CarId, BrandName = brand.BrandName, ColorName = color.ColorName, DailyPrice = car.DailyPrice, Description = car.Description, ModelYear = car.ModelYear,CarName =ca.CarName,ColorId =color.ColorId,BrandId = brand.BrandId
 
-                             select new CarDetailDto() { CarId = car.CarId, BrandName = brand.BrandName, ColorName = color.ColorName, DailyPrice = car.DailyPrice, Description = car.Description, ModelYear = car.ModelYear };
+                             };
 
                 return result.ToList();
             }
