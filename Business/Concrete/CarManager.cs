@@ -44,9 +44,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => Convert.ToDecimal(p.DailyPrice) >= min && Convert.ToDecimal(p.DailyPrice) <= max));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails(int carId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x=>x.CarId==carId).ToList());
         }
 
         [SecuredOperation(" product.add,admin")]
@@ -95,9 +95,9 @@ namespace Business.Concrete
 
         [CacheAspect()]
         [PerformanceAspect(5)]
-        public IDataResult<Car> GetById(int carId)
+        public IDataResult<CarDetailDto> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(p => p.CarId == carId));
+            return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetails().Where(x=>x.CarId==carId).ToString());
         }
         private IResult CheckIfCarNameExist(string carName)
         {
