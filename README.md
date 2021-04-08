@@ -14,7 +14,7 @@ Merhaba, bu proje sayın Engin Demiroğ hocamızın ücretsiz olarak sunduğu 'Y
 - Repository Design Pattern
 - Asenkron Yapı
 
-###ReCapProject içerisinde Libraries > DataAccess > Concrete > EntityFramework > Contexts içerisinde bulunan ReCapContext dosyasının içerisine kullanılacak veritabanı türünün ayarları ve bağlantı cümlesi yapılmalıdır. Varsayılan ayarlar Sql Server içindir.
+[ReCapProject içerisinde DataAccess > Concrete > EntityFramework içerisinde bulunan ReCapContext dosyasının içerisine kullanılacak veritabanı türünün ayarları ve bağlantı cümlesi yapılmalıdır. Varsayılan ayarlar Sql Server içindir.]: https://resmim.net/i/WUcao
 
 ###Token ayarları için, Presentations > WebAPI > appsettings.json dosyasına token kimliği ile ilgili ayar yapılması önerilir.
 
