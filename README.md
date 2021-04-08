@@ -13,7 +13,7 @@ Merhaba, bu proje sayın Engin Demiroğ hocamızın ücretsiz olarak sunduğu 'Y
 - Json Web Token
 - Repository Design Pattern
 - Asenkron Yapı
-
+![WUcao](https://user-images.githubusercontent.com/63123956/114090790-8e17cf80-98c0-11eb-99e8-604571edfc5c.png)
 ReCapProject içerisinde DataAccess > Concrete > EntityFramework içerisinde bulunan ReCapContext dosyasının içerisine kullanılacak veritabanı türünün ayarları ve bağlantı cümlesi yapılmalıdır. Varsayılan ayarlar Sql Server içindir. 
 
 ###Token ayarları için, Presentations > WebAPI > appsettings.json dosyasına token kimliği ile ilgili ayar yapılması önerilir.
